@@ -1,0 +1,93 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: linear-gradient(to bottom, #64d5f3, #647ef3, #6468f3);
+}
+
+.contenedor{
+    background-color: #fff;
+    padding: 1em;
+    width: 30%;
+    border-radius: 1em;
+}
+
+.titulo{
+    margin-bottom: .3em;
+}
+
+.campoTexto{
+    margin-bottom: 1em;
+    outline: none;
+}
+
+.contenedorTarea, .contenedorBotones{
+    width: 50%;
+    display: inline-block;
+}
+
+.contenedorBotones{
+    text-align: end;
+}
+
+.contenedorBotones button{
+    margin: 0 3px;
+}
+
+.contenedorTareaGeneral, button, .campoTexto{
+    padding: .5em;
+}
+
+button{
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 1em;
+    transition: all 0.6s ease;
+}
+
+.contenedorTareaGeneral{
+    background-color: #e1e1ed;
+    margin-bottom: .5em;
+}
+
+.contenedorTareaGeneral:hover{
+    background-color: #e8e8f5;
+}
+
+.btnEliminar{
+    background-color: #ff0000;
+    color: #fff;
+}
+
+.btnEliminar:hover{
+    background-color: #f87a7a;
+}
+
+.btnEditar, .btnAgregar{
+    background-color: #22a8fa;
+    color: #fff;
+}
+
+.btnEditar:hover, .btnAgregar:hover{
+    background-color: #5abaf3;
+    color: #fff;
+}
+
+.btnAgregar{
+    display: block;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 1em;
+}
+
+.header{
+    text-align: center;
+}

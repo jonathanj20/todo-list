@@ -13,6 +13,8 @@ function agregarTarea(){
         const textoSpan = document.createElement('span');
         const btnEliminar = document.createElement('button');
         const btnEditar = document.createElement('button');
+        const contenedorTareaTexto = document.createElement('div');
+        const contenedorBotones = document.createElement('div');
 
         /*Al momento de crear los botones, se les asigna el evento click.
         De esta forma, cada botón creado tendrá su propio evento, y sabrá
@@ -32,10 +34,19 @@ function agregarTarea(){
 
         /*se les añade como hijo el parrafo y el boton al div creado.
         Y el div se le asigna al contenedor listaTareas*/
-        div.appendChild(textoSpan);
-        div.appendChild(btnEliminar);
-        div.appendChild(btnEditar)
+        contenedorTareaTexto.appendChild(textoSpan);
+        contenedorBotones.appendChild(btnEliminar);
+        contenedorBotones.appendChild(btnEditar);
+        div.appendChild(contenedorTareaTexto);
+        div.appendChild(contenedorBotones);
         listaTareas.appendChild(div);
+
+        //asginación de atributos
+        contenedorTareaTexto.setAttribute('class','contenedorTarea');
+        contenedorBotones.setAttribute('class','contenedorBotones');
+        div.setAttribute('class','contenedorTareaGeneral');
+        btnEliminar.setAttribute('class', 'btnEliminar');
+        btnEditar.setAttribute('class', 'btnEditar');
 
         campoTexto.value = '';
     } 
