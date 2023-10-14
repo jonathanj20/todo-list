@@ -30,7 +30,7 @@ body{
 }
 
 .contenedorTarea, .contenedorBotones{
-    width: 50%;
+    width: 47%;
     display: inline-block;
 }
 
@@ -90,4 +90,8 @@ button{
 
 .header{
     text-align: center;
+}
+
+span{
+    margin-left: .5em;
 }

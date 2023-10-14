@@ -9,12 +9,14 @@ btnAgregar.addEventListener("click", () => {
 function agregarTarea(){
     if(campoTexto.value.trim().length !== 0) {
         //creación de elementos HTML
+        //este div, es el que contiene toda la tarea, incluyendo los botones
         const div = document.createElement('div');
         const textoSpan = document.createElement('span');
         const btnEliminar = document.createElement('button');
         const btnEditar = document.createElement('button');
         const contenedorTareaTexto = document.createElement('div');
         const contenedorBotones = document.createElement('div');
+        const checkbox = document.createElement('input');
 
         /*Al momento de crear los botones, se les asigna el evento click.
         De esta forma, cada botón creado tendrá su propio evento, y sabrá
@@ -26,6 +28,7 @@ function agregarTarea(){
         btnEditar.addEventListener("click", () => {
             editarTarea(textoSpan);
         });
+        
 
         //Asignación de textos al span y al boton
         textoSpan.innerHTML = campoTexto.value;
@@ -37,6 +40,7 @@ function agregarTarea(){
         contenedorTareaTexto.appendChild(textoSpan);
         contenedorBotones.appendChild(btnEliminar);
         contenedorBotones.appendChild(btnEditar);
+        div.appendChild(checkbox);
         div.appendChild(contenedorTareaTexto);
         div.appendChild(contenedorBotones);
         listaTareas.appendChild(div);
@@ -46,8 +50,19 @@ function agregarTarea(){
         contenedorBotones.setAttribute('class','contenedorBotones');
         div.setAttribute('class','contenedorTareaGeneral');
         btnEliminar.setAttribute('class', 'btnEliminar');
-        btnEditar.setAttribute('class', 'btnEditar');
+        btnEditar.setAttribute('class', 'btnEditar');   
+        checkbox.setAttribute('type','checkbox');     
 
+        //el evento change sirve para detectar un cambio en el checkbox
+        checkbox.addEventListener('change', () => {
+            if(checkbox.checked){
+                textoSpan.innerHTML = `<del>${textoSpan.innerHTML}</del>`;
+            } else{
+                console.log('El checkbox no está seleccionado');
+            }
+        });
+
+        //marcarTarea(checkbox);
         campoTexto.value = '';
     } 
 }
