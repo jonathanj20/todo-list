@@ -95,3 +95,17 @@ button{
 span{
     margin-left: .5em;
 }
+
+.barraProgresion{
+    display: flex;
+    border: 1px solid #0088dc;
+    border-radius: 1em;
+    margin-bottom: .5em;
+    overflow: hidden;
+}
+
+.barra{
+    width: 10%;
+    height: 15px;
+    transition: all .4s ease;
+}

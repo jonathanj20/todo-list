@@ -1,6 +1,7 @@
 const campoTexto = document.getElementById('campoTexto');
 const btnAgregar = document.getElementById('btnAgregar');
 const listaTareas = document.getElementById('listaTareas');
+const barraProgresion = document.getElementById('barraProgresion');
 
 btnAgregar.addEventListener("click", () => {
     agregarTarea();
@@ -17,6 +18,7 @@ function agregarTarea(){
         const contenedorTareaTexto = document.createElement('div');
         const contenedorBotones = document.createElement('div');
         const checkbox = document.createElement('input');
+        const barra = document.createElement('div');
 
         /*Al momento de crear los botones, se les asigna el evento click.
         De esta forma, cada botón creado tendrá su propio evento, y sabrá
@@ -44,6 +46,7 @@ function agregarTarea(){
         div.appendChild(contenedorTareaTexto);
         div.appendChild(contenedorBotones);
         listaTareas.appendChild(div);
+        barraProgresion.appendChild(barra);
 
         //asginación de atributos
         contenedorTareaTexto.setAttribute('class','contenedorTarea');
@@ -52,17 +55,19 @@ function agregarTarea(){
         btnEliminar.setAttribute('class', 'btnEliminar');
         btnEditar.setAttribute('class', 'btnEditar');   
         checkbox.setAttribute('type','checkbox');     
+        barra.setAttribute('class','barra');
 
         //el evento change sirve para detectar un cambio en el checkbox
         checkbox.addEventListener('change', () => {
             if(checkbox.checked){
-                textoSpan.innerHTML = `<del>${textoSpan.innerHTML}</del>`;
+                textoSpan.style.textDecoration = 'line-through';
+                barra.style.backgroundColor = '#93d3fa';
             } else{
-                console.log('El checkbox no está seleccionado');
+                textoSpan.style.textDecoration = 'none';
+                barra.style.backgroundColor = 'transparent';
             }
         });
 
-        //marcarTarea(checkbox);
         campoTexto.value = '';
     } 
 }
