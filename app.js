@@ -2,6 +2,8 @@ const campoTexto = document.getElementById('campoTexto');
 const btnAgregar = document.getElementById('btnAgregar');
 const listaTareas = document.getElementById('listaTareas');
 const barraProgresion = document.getElementById('barraProgresion');
+let barras = [];
+let primerElementoEncontrado = false;
 
 btnAgregar.addEventListener("click", () => {
     agregarTarea();
@@ -19,6 +21,7 @@ function agregarTarea(){
         const contenedorBotones = document.createElement('div');
         const checkbox = document.createElement('input');
         const barra = document.createElement('div');
+        barras.push(barra);
 
         /*Al momento de crear los botones, se les asigna el evento click.
         De esta forma, cada botón creado tendrá su propio evento, y sabrá
@@ -56,15 +59,29 @@ function agregarTarea(){
         btnEditar.setAttribute('class', 'btnEditar');   
         checkbox.setAttribute('type','checkbox');     
         barra.setAttribute('class','barra');
-
+       
         //el evento change sirve para detectar un cambio en el checkbox
         checkbox.addEventListener('change', () => {
             if(checkbox.checked){
                 textoSpan.style.textDecoration = 'line-through';
-                barra.style.backgroundColor = '#93d3fa';
+                barras.forEach((elemento) => {
+                    if(elemento.style.backgroundColor === '' && !primerElementoEncontrado){
+                        elemento.style.backgroundColor = '#93d3fa';
+                        primerElementoEncontrado = true;
+                    }
+                });
+                primerElementoEncontrado = false;
             } else{
+                /**este contador representa el índice del array de la barra*/
+                let contador = -1;
                 textoSpan.style.textDecoration = 'none';
-                barra.style.backgroundColor = 'transparent';
+                barras.forEach((elemento) => {
+                    if(elemento.style.backgroundColor != ''){
+                        contador++;
+                    }
+                });
+                barras[contador].style.backgroundColor = '';
+                contador = -1;
             }
         });
 
@@ -81,3 +98,5 @@ function eliminarTarea(tarea){
 function editarTarea(tarea){
     tarea.contentEditable = 'true';
 }
+
+
