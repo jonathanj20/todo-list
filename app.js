@@ -34,7 +34,6 @@ function agregarTarea(){
             editarTarea(textoSpan);
         });
         
-
         //Asignación de textos al span y al boton
         textoSpan.innerHTML = campoTexto.value;
         btnEliminar.innerHTML = 'Eliminar';
