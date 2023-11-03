@@ -3,7 +3,7 @@ const btnAgregar = document.getElementById('btnAgregar');
 const listaTareas = document.getElementById('listaTareas');
 const barraProgresion = document.getElementById('barraProgresion');
 let barras = [];
-let primerElementoEncontrado = false;
+let primerElementoEncontrado = false, esEditable = false;
 
 btnAgregar.addEventListener("click", () => {
     agregarTarea();
@@ -89,14 +89,13 @@ function agregarTarea(){
     } 
 }
 
-function eliminarTarea(tarea){
-    /*la función removeChild, eliminar un nodo hijo, y puede
-    recibir como parámetro un elemento HTML o un id*/
-    listaTareas.removeChild(tarea);
-}
+/*la función removeChild, eliminar un nodo hijo, y puede
+recibir como parámetro un elemento HTML o un id*/
+const eliminarTarea = (tarea) => listaTareas.removeChild(tarea);
 
 function editarTarea(tarea){
-    tarea.contentEditable = 'true';
+    esEditable = !esEditable;
+    tarea.contentEditable = esEditable;
 }
 
 

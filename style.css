@@ -5,15 +5,13 @@
 }
 
 body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
     background-image: linear-gradient(to bottom, #64d5f3, #647ef3, #6468f3);
+    min-height: 100vh;
 }
 
 .contenedor{
+    margin: 2em auto;
     background-color: #fff;
     padding: 1em;
     width: 30%;
