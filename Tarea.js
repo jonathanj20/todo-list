@@ -41,12 +41,8 @@ class Tarea {
             if (this.checkbox.checked) {
                 this.textoSpan.style.textDecoration = 'line-through';
 
-                for (let barra of barrasCreadas) {
-                    if (!barra.classList.contains("barraPintada")) {
-                        barra.classList.add("barraPintada");
-                        break;
-                    }
-                }
+                const primeraBarraNoPintada = Array.from(barrasCreadas).find(barra => !barra.classList.contains("barraPintada"));
+                primeraBarraNoPintada.classList.add("barraPintada");
             } else {
                 this.textoSpan.style.textDecoration = '';
                 despintarUltimaBarraPintada();
