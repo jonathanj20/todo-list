@@ -34,38 +34,37 @@ class Tarea {
         this.checkbox.setAttribute('type', 'checkbox');
     }
 
-    verificarCompletado(barraProgresion) {
-        /**Cuando se marca completado una tarea se crea una barra, y cuando
-         * se quita como completado cualquier tarea se quita una barra. 
-         * Ya sea para ponerle un color a la barra cuando se marque como
-         * completado una tarea o para eliminar una barra cuando se quite
-         * como marcada, se usará el último hijo del elemento barraProgresion
-         * porque accedemos a su último hijo con la propiedad 'lastChild'.
-        */
+    verificarCompletado(despintarUltimaBarraPintada) {
         this.checkbox.addEventListener('change', () => {
+            const barrasCreadas = document.querySelectorAll(".barraCreada");
+
             if (this.checkbox.checked) {
                 this.textoSpan.style.textDecoration = 'line-through';
 
-                const barra = document.createElement('div');
-                barraProgresion.appendChild(barra);
-                barra.setAttribute('class', 'barra');
-                barraProgresion.lastChild.style.backgroundColor = '#93d3fa';
+                for (let barra of barrasCreadas) {
+                    if (!barra.classList.contains("barraPintada")) {
+                        barra.classList.add("barraPintada");
+                        break;
+                    }
+                }
             } else {
                 this.textoSpan.style.textDecoration = '';
-                barraProgresion.removeChild(barraProgresion.lastChild);
+                despintarUltimaBarraPintada();
             }
         });
     }
 
-    eliminarTarea(barraProgresion) {
+    eliminarTarea(barraProgresion, despintarUltimaBarraPintada) {
         this.btnEliminar.addEventListener("click", () => {
             /*la función removeChild, elimina un nodo hijo, y puede
             recibir como parámetro un elemento HTML o un id*/
-            this.listaTareas.removeChild(this.div);
 
             if (this.checkbox.checked) {
-                barraProgresion.removeChild(barraProgresion.lastChild);
+                despintarUltimaBarraPintada();
             }
+
+            this.listaTareas.removeChild(this.div);
+            barraProgresion.removeChild(barraProgresion.lastChild);
         });
     }
 

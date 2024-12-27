@@ -32,6 +32,10 @@ body{
     display: inline-block;
 }
 
+.contenedorTarea{
+    margin-left: .5em;
+}
+
 .contenedorBotones{
     text-align: end;
 }
@@ -54,6 +58,8 @@ button{
 .contenedorTareaGeneral{
     background-color: #e1e1ed;
     margin-bottom: .5em;
+    display: flex;
+    align-items: center;
 }
 
 .contenedorTareaGeneral:hover{
@@ -90,10 +96,6 @@ button{
     text-align: center;
 }
 
-span{
-    margin-left: .5em;
-}
-
 .barraProgresion{
     display: flex;
     border: 1px solid #0088dc;
@@ -102,8 +104,13 @@ span{
     overflow: hidden;
 }
 
-.barra{
-    width: 10%;
+.barraCreada{
+    transition: all 1s;
+    background-color: #93d3fa;
+    width:0;
     height: 15px;
-    transition: all .4s ease;
+}
+
+.barraPintada{
+    width: 10%;
 }
