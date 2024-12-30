@@ -10,7 +10,6 @@ class Tarea {
         this.contenedorBotones = document.createElement('div');
         this.checkbox = document.createElement('input');
         this.esEditable = false;
-        this.primerElementoEncontrado = false;
     }
 
     mostrarTarea() {
@@ -34,7 +33,7 @@ class Tarea {
         this.checkbox.setAttribute('type', 'checkbox');
     }
 
-    verificarCompletado(despintarUltimaBarraPintada) {
+    verificarCompletado() {
         this.checkbox.addEventListener('change', () => {
             const barrasCreadas = document.querySelectorAll(".barraCreada");
 
@@ -43,24 +42,31 @@ class Tarea {
 
                 const primeraBarraNoPintada = Array.from(barrasCreadas).find(barra => !barra.classList.contains("barraPintada"));
                 primeraBarraNoPintada.classList.add("barraPintada");
+                tareasCompletadas++;
             } else {
                 this.textoSpan.style.textDecoration = '';
                 despintarUltimaBarraPintada();
+                tareasCompletadas--;
             }
+
+            establecerPorcentaje();
         });
     }
 
-    eliminarTarea(barraProgresion, despintarUltimaBarraPintada) {
+    eliminarTarea() {
         this.btnEliminar.addEventListener("click", () => {
             /*la función removeChild, elimina un nodo hijo, y puede
             recibir como parámetro un elemento HTML o un id*/
 
             if (this.checkbox.checked) {
                 despintarUltimaBarraPintada();
+                tareasCompletadas--;
             }
 
+            tareasTotales--;
             this.listaTareas.removeChild(this.div);
             barraProgresion.removeChild(barraProgresion.lastChild);
+            establecerPorcentaje();
         });
     }
 
