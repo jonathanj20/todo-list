@@ -32,7 +32,7 @@ const despintarUltimaBarraPintada = () => {
     barrasPintadas[barrasPintadas.length - 1].classList.remove("barraPintada");
 }
 
-const calcularTareasCompletadas = (tareasTotales, tareasCompletadas) => (tareasCompletadas / tareasTotales) * 100;
+const calcularTareasCompletadas = (tareasTotales, tareasCompletadas) => (tareasCompletadas * 100) / tareasTotales;
 const establecerPorcentaje = () => porcentajeCompletado.innerHTML = calcularTareasCompletadas(tareasTotales, tareasCompletadas) > 0 ? `${calcularTareasCompletadas(tareasTotales, tareasCompletadas)}%` : "0%";
 
 establecerPorcentaje();
